@@ -64,10 +64,9 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <image>
-                        <labels>
-                            <traefik.enable>true</traefik.enable>
-                            <traefik.http.services.app.loadbalancer.server.port>8080</traefik.http.services.app.loadbalancer.server.port>
-                        </labels>
+                        <env>
+                            <BP_IMAGE_LABELS>traefik.enable=true traefik.http.services.app.loadbalancer.server.port=8080</BP_IMAGE_LABELS>
+                        </env>
                     </image>
                 </configuration>
             </plugin>
