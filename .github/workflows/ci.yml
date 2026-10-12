@@ -22,20 +22,20 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
       - name: Install mise
-        uses: jdx/mise-action@v2
+        uses: jdx/mise-action@c37c93293d6b742fc901e1406b8f764f6fb19dac # v2
         with:
           install: true
           cache: true
 
-      - name: Cache Maven repository
-        uses: actions/cache@v4
+      - name: Set up Java
+        uses: actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3 # v4
         with:
-          path: ~/.m2/repository
-          key: m2-${{ runner.os }}-${{ hashFiles('**/pom.xml') }}
-          restore-keys: m2-${{ runner.os }}-
+          distribution: temurin
+          java-version: 25
+          cache: maven
 
       - name: Verify
         run: ./mvnw --batch-mode --no-transfer-progress verify
